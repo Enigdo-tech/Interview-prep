@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Practice - Gamified Interview Preparation</title>
+    <meta name="description"
+        content="Practice and ace your interviews with our gamified interview preparation tool. Upload job descriptions and practice with STAR methodology guidance.">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                <h1>Interview<span class="gradient-text">Pro</span></h1>
+            </div>
+            <div class="header-stats" id="headerStats" style="display: none;">
+                <div class="stat-item">
+                    <span class="stat-label">Score</span>
+                    <span class="stat-value" id="totalScore">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Level</span>
+                    <span class="stat-value" id="userLevel">1</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Screen -->
+            <div class="screen active" id="welcomeScreen">
+                <div class="welcome-container">
+                    <div class="welcome-hero">
+                        <h2 class="hero-title">Master Your Interview Skills</h2>
+                        <p class="hero-subtitle">Practice with AI-powered questions tailored to your job description.
+                            Get real-time STAR methodology guidance and level up your interview game.</p>
+                    </div>
+
+                    <div class="upload-section">
+                        <div class="upload-card">
+                            <div class="upload-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M17 8L12 3L7 8" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M12 3V15" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <h3>Upload Job Description</h3>
+                            <p>Upload the job description to analyze and match with your resume</p>
+                            <div class="upload-input-wrapper">
+                                <input type="file" id="jobDescriptionFile" accept=".txt,.pdf,.doc,.docx"
+                                    class="file-input">
+                                <label for="jobDescriptionFile" class="upload-button">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" />
+                                    </svg>
+                                    Choose File
+                                </label>
+                            </div>
+                            <div class="file-info" id="fileInfo" style="display: none;">
+                                <span class="file-name" id="fileName"></span>
+                                <button class="remove-file" id="removeFile">×</button>
+                            </div>
+                        </div>
+
+                        <div class="divider">
+                            <span>OR</span>
+                        </div>
+
+                        <div class="textarea-card">
+                            <h3>Paste Job Description</h3>
+                            <textarea id="jobDescriptionText"
+                                placeholder="Paste the job description here...&#10;&#10;Include role requirements, responsibilities, and qualifications for the best practice experience."
+                                rows="6"></textarea>
+                        </div>
+
+                        <div class="divider">
+                            <span>AND</span>
+                        </div>
+
+                        <div class="upload-card">
+                            <div class="upload-icon resume-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M16 13H8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M16 17H8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M10 9H8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <h3>Upload Your Resume</h3>
+                            <p>Upload your resume for ATS scoring and personalized recommendations</p>
+                            <div class="upload-input-wrapper">
+                                <input type="file" id="resumeFile" accept=".txt,.pdf,.doc,.docx" class="file-input">
+                                <label for="resumeFile" class="upload-button">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" />
+                                    </svg>
+                                    Choose Resume
+                                </label>
+                            </div>
+                            <div class="file-info" id="resumeFileInfo" style="display: none;">
+                                <span class="file-name" id="resumeFileName"></span>
+                                <button class="remove-file" id="removeResume">×</button>
+                            </div>
+                        </div>
+
+                        <div class="divider">
+                            <span>OR</span>
+                        </div>
+
+                        <div class="textarea-card">
+                            <h3>Paste Your Resume</h3>
+                            <textarea id="resumeText"
+                                placeholder="Paste your resume content here...&#10;&#10;Include your experience, skills, and achievements."
+                                rows="6"></textarea>
+                        </div>
+                    </div>
+
+                    <button class="primary-button large" id="startButton" disabled>
+                        <span>Start Interview Practice</span>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Analysis Screen (New) -->
+            <div class="screen" id="analysisScreen">
+                <div class="analysis-container">
+                    <div class="analysis-header">
+                        <h2 class="section-title">Resume-JD Analysis & Insights</h2>
+                        <p class="section-subtitle">Comprehensive analysis of your resume against the job description
+                        </p>
+                    </div>
+
+                    <!-- ATS Score Card -->
+                    <div class="ats-score-card">
+                        <div class="ats-score-visual">
+                            <svg class="score-circle" viewBox="0 0 200 200">
+                                <circle cx="100" cy="100" r="90" fill="none" stroke="hsla(0, 0%, 100%, 0.1)"
+                                    stroke-width="12" />
+                                <circle id="scoreProgress" cx="100" cy="100" r="90" fill="none" stroke="url(#gradient)"
+                                    stroke-width="12" stroke-linecap="round" transform="rotate(-90 100 100)"
+                                    stroke-dasharray="565.48" stroke-dashoffset="565.48" />
+                                <defs>
+                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:hsl(260, 85%, 60%);stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:hsl(190, 85%, 55%);stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <div class="score-text">
+                                <span class="score-number" id="atsScore">0</span>
+                                <span class="score-label">ATS Score</span>
+                            </div>
+                        </div>
+                        <div class="ats-breakdown">
+                            <h3>Match Breakdown</h3>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Keywords Match</span>
+                                <div class="breakdown-bar">
+                                    <div class="breakdown-fill" id="keywordsBar"></div>
+                                </div>
+                                <span class="breakdown-value" id="keywordsScore">0%</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Skills Match</span>
+                                <div class="breakdown-bar">
+                                    <div class="breakdown-fill" id="skillsBar"></div>
+                                </div>
+                                <span class="breakdown-value" id="skillsScore">0%</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span class="breakdown-label">Experience Match</span>
+                                <div class="breakdown-bar">
+                                    <div class="breakdown-fill" id="experienceBar"></div>
+                                </div>
+                                <span class="breakdown-value" id="experienceScore">0%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Missing Keywords -->
+                    <div class="insights-card">
+                        <div class="insights-header">
+                            <div class="insight-icon warning">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <line x1="12" y1="9" x2="12" y2="13" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <line x1="12" y1="17" x2="12.01" y2="17" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <h3>Missing Keywords from JD</h3>
+                        </div>
+                        <div class="keywords-list" id="missingKeywords">
+                            <!-- Keywords will be injected here -->
+                        </div>
+                    </div>
+
+                    <!-- Resume Improvement Suggestions -->
+                    <div class="insights-card">
+                        <div class="insights-header">
+                            <div class="insight-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M16 13H8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M16 17H8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M10 9H8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <h3>Recommended Resume Bullet Points</h3>
+                        </div>
+                        <div class="bullet-points-list" id="resumePointsList">
+                            <!-- Points will be injected here -->
+                        </div>
+                    </div>
+
+                    <button class="primary-button large" id="proceedToInterview">
+                        <span>Proceed to Interview Practice</span>
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Interview Type Selection Screen -->
+            <div class="screen" id="selectionScreen">
+                <div class="selection-container">
+                    <h2 class="section-title">Choose Your Interview Round</h2>
+                    <p class="section-subtitle">Select the type of interview you want to practice for</p>
+
+                    <div class="interview-types">
+                        <div class="interview-card" data-type="screening">
+                            <div class="card-badge">Level 1</div>
+                            <div class="card-icon screening">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <h3>Screening Round</h3>
+                            <p>Basic HR questions to assess cultural fit and general qualifications</p>
+                            <ul class="card-features">
+                                <li>General HR questions</li>
+                                <li>Cultural fit assessment</li>
+                                <li>Background verification</li>
+                                <li>5-7 questions</li>
+                            </ul>
+                            <button class="select-button" data-type="screening">Select Round</button>
+                        </div>
+
+                        <div class="interview-card featured" data-type="manager">
+                            <div class="card-badge popular">Most Popular</div>
+                            <div class="card-icon manager">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <h3>Manager Round</h3>
+                            <p>Technical and role-specific questions based on the job description</p>
+                            <ul class="card-features">
+                                <li>Job-specific questions</li>
+                                <li>Technical assessment</li>
+                                <li>Problem-solving scenarios</li>
+                                <li>7-10 questions</li>
+                            </ul>
+                            <button class="select-button" data-type="manager">Select Round</button>
+                        </div>
+
+                        <div class="interview-card" data-type="team">
+                            <div class="card-badge">Level 3</div>
+                            <div class="card-icon team">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <h3>Team Round</h3>
+                            <p>Collaboration and experience-focused questions with team scenarios</p>
+                            <ul class="card-features">
+                                <li>Collaboration scenarios</li>
+                                <li>Team dynamics</li>
+                                <li>Experience-based questions</li>
+                                <li>6-8 questions</li>
+                            </ul>
+                            <button class="select-button" data-type="team">Select Round</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interview Screen -->
+            <div class="screen" id="interviewScreen">
+                <div class="interview-container">
+                    <!-- Progress Bar -->
+                    <div class="progress-section">
+                        <div class="progress-header">
+                            <span class="progress-label">Question <span id="currentQuestion">1</span> of <span
+                                    id="totalQuestions">5</span></span>
+                            <span class="progress-percentage" id="progressPercentage">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                    </div>
+
+                    <!-- Question Card -->
+                    <div class="question-card">
+                        <div class="question-header">
+                            <span class="question-type" id="questionType">Screening</span>
+                            <div class="timer" id="timer">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                                    <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg>
+                                <span id="timerValue">00:00</span>
+                            </div>
+                        </div>
+                        <h3 class="question-text" id="questionText"></h3>
+                    </div>
+
+                    <!-- STAR Methodology Guide -->
+                    <div class="star-guide">
+                        <button class="star-toggle" id="starToggle">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <span>STAR Method Guide</span>
+                        </button>
+                        <div class="star-content" id="starContent">
+                            <div class="star-item">
+                                <div class="star-letter">S</div>
+                                <div class="star-info">
+                                    <h4>Situation</h4>
+                                    <p>Set the scene and give context. Describe the challenge or situation you faced.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="star-item">
+                                <div class="star-letter">T</div>
+                                <div class="star-info">
+                                    <h4>Task</h4>
+                                    <p>Explain your role and responsibility. What was expected of you?</p>
+                                </div>
+                            </div>
+                            <div class="star-item">
+                                <div class="star-letter">A</div>
+                                <div class="star-info">
+                                    <h4>Action</h4>
+                                    <p>Describe the specific steps you took. Focus on your contributions.</p>
+                                </div>
+                            </div>
+                            <div class="star-item">
+                                <div class="star-letter">R</div>
+                                <div class="star-info">
+                                    <h4>Result</h4>
+                                    <p>Share the outcomes. Quantify your impact when possible.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Answer Section -->
+                    <div class="answer-section">
+                        <div class="audio-controls">
+                            <button class="mic-button" id="micButton">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"
+                                        fill="currentColor" />
+                                    <path d="M19 10v2a7 7 0 0 1-14 0v-2" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M12 19v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M8 23h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                <span id="micStatus">Tap to Speak</span>
+                            </button>
+                            <div class="audio-visualizer" id="audioVisualizer">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+
+                        <label for="answerText" class="answer-label">Your Answer (Speech to Text)</label>
+                        <textarea id="answerText"
+                            placeholder="Tap the microphone to start speaking...&#10;&#10;Your speech will be transcribed here automatically."
+                            rows="8"></textarea>
+
+                        <div class="answer-actions">
+                            <button class="secondary-button" id="skipButton">Skip Question</button>
+                            <button class="primary-button" id="submitAnswer">
+                                <span>Submit Answer</span>
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Screen -->
+            <div class="screen" id="resultsScreen">
+                <div class="results-container">
+                    <div class="results-hero">
+                        <div class="trophy-animation">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6 9H4.5C3.83696 9 3.20107 9.26339 2.73223 9.73223C2.26339 10.2011 2 10.837 2 11.5C2 12.163 2.26339 12.7989 2.73223 13.2678C3.20107 13.7366 3.83696 14 4.5 14H6"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M18 9H19.5C20.163 9 20.7989 9.26339 21.2678 9.73223C21.7366 10.2011 22 10.837 22 11.5C22 12.163 21.7366 12.7989 21.2678 13.2678C20.7989 13.7366 20.163 14 19.5 14H18"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M6 9V7C6 5.93913 6.42143 4.92172 7.17157 4.17157C7.92172 3.42143 8.93913 3 10 3H14C15.0609 3 16.0783 3.42143 16.8284 4.17157C17.5786 4.92172 18 5.93913 18 7V9"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M6 14C6 16.2091 6.84285 18.3279 8.34315 19.8284C9.84344 21.3289 11.9622 22.1717 14 22.1717H10C7.96218 22.1717 5.84344 21.3289 4.34315 19.8284C2.84285 18.3279 2 16.2091 2 14"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M18 14C18 16.2091 17.1571 18.3279 15.6569 19.8284C14.1566 21.3289 12.0378 22.1717 10 22.1717H14C16.0378 22.1717 18.1566 21.3289 19.6569 19.8284C21.1571 18.3279 22 16.2091 22 14"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <h2>Interview Complete!</h2>
+                        <p class="results-subtitle">Great job! Here's how you performed</p>
+                    </div>
+
+                    <div class="results-stats">
+                        <div class="result-stat">
+                            <div class="stat-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-number" id="answeredCount">0</span>
+                                <span class="stat-text">Questions Answered</span>
+                            </div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="stat-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                                    <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-number" id="totalTime">0m</span>
+                                <span class="stat-text">Total Time</span>
+                            </div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="stat-icon">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-number" id="pointsEarned">0</span>
+                                <span class="stat-text">Points Earned</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feedback-section">
+                        <h3>Detailed Feedback</h3>
+                        <div class="feedback-card">
+                            <div class="feedback-item">
+                                <h4>Strengths</h4>
+                                <ul id="feedbackStrengths"></ul>
+                            </div>
+                            <div class="feedback-item">
+                                <h4>Areas for Improvement</h4>
+                                <ul id="feedbackImprovements"></ul>
+                            </div>
+                            <div class="feedback-item">
+                                <h4>Overall Assessment</h4>
+                                <p id="feedbackSummary"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="results-actions">
+                        <button class="secondary-button large" id="reviewAnswers">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 12S5 4 12 4C19 4 23 12 23 12S19 20 12 20C5 20 1 12 1 12Z"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <span>Review Answers</span>
+                        </button>
+                        <button class="primary-button large" id="practiceAgain">
+                            <span>Practice Another Round</span>
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 4V10H7M23 20V14H17" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M20.49 9C19.9828 7.56678 19.1209 6.28536 17.9845 5.27542C16.8482 4.26548 15.4745 3.55976 13.9917 3.22426C12.5089 2.88875 10.9652 2.93434 9.50481 3.35677C8.04437 3.77921 6.71475 4.56471 5.64 5.64L1 10M23 14L18.36 18.36C17.2853 19.4353 15.9556 20.2208 14.4952 20.6432C13.0348 21.0657 11.4911 21.1112 10.0083 20.7757C8.52547 20.4402 7.1518 19.7345 6.01547 18.7246C4.87913 17.7146 4.01717 16.4332 3.51 15"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
