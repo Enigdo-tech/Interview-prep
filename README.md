@@ -1,196 +1,113 @@
-# InterviewPro - Holistic Resume-JD Matching & Interview Preparation Platform
+# Enigdos AI Resume Optimizer
 
-A comprehensive, gamified web application that helps job seekers optimize their resumes, calculate ATS scores, and practice interviews with AI-powered, job-description-specific questions.
+A premium, AI-powered web application for resume optimization, ATS scoring, and interview preparation using Google Gemini AI.
 
-## 🚀 Key Features
+## 🚀 Features
 
-### 1. **Resume-JD Matching & ATS Scoring**
-- Upload both your **Resume** and **Job Description**
-- Get instant **ATS (Applicant Tracking System) Score** (0-100)
-- Detailed breakdown of:
-  - **Keywords Match**: How well your resume matches JD keywords
-  - **Skills Match**: Technical skills alignment
-  - **Experience Match**: Years of experience comparison
-- Identify **missing keywords** from the job description
-- Visual circular progress indicator for ATS score
+### 🤖 AI-Powered Analysis
+- **Dynamic Resume Optimization**: Uses Google Gemini AI to intelligently rewrite resume bullet points
+- **Smart ATS Scoring**: AI-driven analysis of resume-job description match (0-100 score)
+- **Contextual Keyword Extraction**: Identifies the most relevant keywords from job descriptions
+- **Intelligent Rewriting**: Maintains professional tone while optimizing for ATS systems
 
-### 2. **Intelligent Resume Improvement Suggestions**
-- **15+ tailored bullet points** based on:
-  - Skills mentioned in the job description
-  - Your current resume content
-  - Industry best practices
-- Copy-paste ready resume bullets to improve your ATS score
-- Skill-specific recommendations (JavaScript, Python, AWS, Agile, etc.)
+### 💼 Interview Preparation
+- **Custom Interview Questions**: AI generates 5 tailored interview questions based on the job description
+- **Role-Specific**: Questions are contextually relevant to the specific position
 
-### 3. **JD-Specific Interview Questions**
-- Questions **dynamically generated** from the job description
-- Three interview levels:
-  - **Screening Round**: HR and cultural fit questions (5 questions)
-  - **Manager Round**: Technical and role-specific questions based on JD (7 questions)
-  - **Team Round**: Collaboration and experience-focused questions (6 questions)
-- Questions tailored to the specific skills and requirements in the JD
+### ✨ Resume Improvement Suggestions
+- **AI-Powered Recommendations**: Get 5 actionable bullet points to add to your resume
+- **Quantifiable & Action-Oriented**: Suggestions follow best practices for resume writing
+- **Job-Specific**: Tailored to match the target job requirements
 
-### 4. **Audio Response (Speech-to-Text)**
-- **Microphone button** for hands-free answering
-- Supports **Indian English dialect** (`en-IN`)
-- Real-time audio visualizer
-- Automatic transcription to text area
-- Works in Chrome, Edge, and Safari
-
-### 5. **STAR Methodology Guidance**
-- Built-in **STAR framework** guide (Situation, Task, Action, Result)
-- Expandable reference panel during interviews
-- **Bonus points** for using STAR elements in answers
-
-### 6. **Gamification & Progress Tracking**
-- **Points System**: Earn points for comprehensive, structured answers
-- **Level Progression**: Level up every 100 points
-- **Real-time Timer**: Track time spent on each question
-- **Performance Analytics**: Detailed feedback on strengths and improvements
-
-### 7. **Comprehensive Feedback**
-- **Strengths**: What you did well
-- **Areas for Improvement**: Specific suggestions
-- **Overall Assessment**: Performance summary
-- **ATS Score Integration**: Feedback includes resume-JD alignment insights
+### 🎨 Premium Design
+- **Glassmorphism UI**: Modern, sleek dark mode interface
+- **Responsive Layout**: Works seamlessly on desktop and mobile
+- **Smooth Animations**: Engaging micro-interactions and transitions
+- **Professional Output**: Clean, ATS-friendly resume formatting
 
 ## 📋 How to Use
 
-### Step 1: Upload Documents
-1. **Upload or paste** your **Job Description**
-2. **Upload or paste** your **Resume**
-3. Click **"Start Interview Practice"**
+### 1. Setup
+1. Open the folder `resume-optimizer-portal`
+2. Double-click `index.html` to open it in your web browser
 
-### Step 2: Review Analysis
-- View your **ATS Score** and breakdown
-- See **missing keywords** from the JD
-- Review **15+ recommended resume bullet points**
-- Click **"Proceed to Interview Practice"**
+### 2. Configure API Key
+1. Get a free Google Gemini API key from [Google AI Studio](https://aistudio.google.com/app/apikey)
+2. Enter your API key in the configuration section
+3. Click "Save Key" (it will be stored locally in your browser)
 
-### Step 3: Select Interview Round
-Choose from:
-- **Screening Round** (HR questions)
-- **Manager Round** (Technical, JD-specific)
-- **Team Round** (Collaboration & experience)
+### 3. Optimize Your Resume
+1. **Upload Resume**: Drag and drop or click to upload your resume (PDF, DOCX, or TXT)
+2. **Paste Job Description**: Copy and paste the target job posting
+3. **Click "Analyze with AI"**: Let the AI work its magic
 
-### Step 4: Answer Questions
-- Read the question
-- Use the **STAR Method Guide** for structured answers
-- **Tap the microphone** to speak your answer (or type)
-- Submit or skip to next question
+### 4. Review Results
+- **ATS Score**: See how well your resume matches (with detailed analysis)
+- **Interview Questions**: Practice with AI-generated questions
+- **Improvement Suggestions**: Get specific bullet points to enhance your resume
+- **Optimized Resume**: Download the AI-optimized version as PDF
 
-### Step 5: Review Results
-- See your **performance statistics**
-- Get **detailed feedback**
-- **Review all your answers**
-- Practice again to improve!
+## 🛠️ Tech Stack
 
-## 🎯 Scoring System
+- **Frontend**: HTML5, CSS3 (Vanilla), JavaScript (ES6+)
+- **AI Engine**: Google Gemini 1.5 Flash API
+- **PDF Parsing**: PDF.js
+- **DOCX Parsing**: Mammoth.js
+- **PDF Generation**: html2pdf.js
+- **Fonts**: Google Fonts (Inter)
 
-### Points Breakdown
-- **Base Points**: 10 points per answered question
-- **Length Bonus**: 
-  - +5 points for answers over 200 characters
-  - +10 points for answers over 400 characters
-- **STAR Bonus**: +5 points for each STAR element mentioned
-- **Time Bonus**: +5 points for answering within 5 minutes
+## 🔒 Privacy & Security
 
-### Level System
-- **Level 1**: 0-99 points
-- **Level 2**: 100-199 points
-- **Level 3**: 200-299 points
-- And so on...
+- **Local Storage**: API keys are stored locally in your browser
+- **No Server**: All processing happens in your browser
+- **Direct API Calls**: Your data goes directly to Google Gemini API
+- **No Data Collection**: We don't store or collect any of your information
 
-## 🔧 Technical Stack
+## 🎯 Key Differences from Previous Version
 
-- **HTML5**: Semantic structure
-- **CSS3**: Modern styling with custom properties, gradients, animations
-- **Vanilla JavaScript**: No frameworks, pure JS for maximum performance
-- **Web Speech API**: For speech-to-text functionality
-- **Google Fonts**: Inter and Outfit font families
+### Before (Fixed Rules)
+- ❌ Simple keyword frequency counting
+- ❌ Random action verb injection
+- ❌ Basic text manipulation
+- ❌ No interview preparation
+- ❌ No intelligent analysis
 
-## 📊 ATS Score Calculation
-
-The ATS score is calculated using a weighted average:
-- **40%** Keywords Match (JD keywords found in resume)
-- **40%** Skills Match (Technical skills alignment)
-- **20%** Experience Match (Years of experience comparison)
-
-### Score Interpretation
-- **90-100**: Excellent match, very likely to pass ATS
-- **70-89**: Good match, strong chance of passing ATS
-- **50-69**: Moderate match, consider adding missing keywords
-- **Below 50**: Weak match, significant resume optimization needed
-
-## 🎤 Audio Features
-
-### Browser Support
-- ✅ **Chrome** (Recommended)
-- ✅ **Edge**
-- ✅ **Safari**
-- ❌ Firefox (Web Speech API not fully supported)
-
-### Language Support
-- Optimized for **Indian English** dialect
-- Automatically transcribes speech to text
-- Handles accents and variations
-
-## 📁 File Structure
-
-```
-interview-practice/
-├── index.html          # Main HTML structure
-├── index.css           # Styling and design system
-├── app.js              # Application logic and interactivity
-└── README.md           # Documentation
-```
-
-## 🚀 Getting Started
-
-### Option 1: Open Directly
-```bash
-open /Users/Enigdo/Downloads/interview-practice/index.html
-```
-
-### Option 2: Use a Local Server (Optional)
-```bash
-cd /Users/Enigdo/Downloads/interview-practice
-python3 -m http.server 8000
-# Then open http://localhost:8000 in your browser
-```
+### After (AI-Powered)
+- ✅ Context-aware AI optimization
+- ✅ Intelligent bullet point rewriting
+- ✅ Comprehensive ATS analysis
+- ✅ Custom interview questions
+- ✅ Actionable improvement suggestions
+- ✅ Professional, natural language output
 
 ## 💡 Tips for Best Results
 
-### For ATS Score
-1. Include **exact keywords** from the job description in your resume
-2. Match the **job title** and **required skills** precisely
-3. Quantify your achievements with **numbers and metrics**
-4. Use **industry-standard terminology**
+1. **Complete Job Descriptions**: Paste the full job posting for better analysis
+2. **Clean Resume Format**: Use standard resume formats (PDF or DOCX work best)
+3. **Review AI Suggestions**: Always review and customize AI-generated content
+4. **Iterate**: Run multiple times with different job descriptions to build a versatile resume
 
-### For Interview Practice
-1. Use the **STAR methodology** for behavioral questions
-2. Provide **specific examples** from your experience
-3. Keep answers **concise but comprehensive** (200-400 words)
-4. Practice with **different interview rounds** to build confidence
+## 🔧 Troubleshooting
 
-## 🔮 Future Enhancements
+**API Key Issues**
+- Ensure your API key starts with "AIza"
+- Check that you've enabled the Gemini API in Google Cloud Console
+- Verify you haven't exceeded your API quota
 
-- AI-powered answer evaluation and scoring
-- Video recording for mock interviews
-- Industry-specific question banks
-- Resume export with suggested improvements
-- Integration with LinkedIn and job boards
-- Multiplayer practice mode
-- Interview scheduling and reminders
+**Resume Upload Issues**
+- Supported formats: PDF, DOCX, TXT
+- Ensure file is not corrupted
+- Try converting to a different format if issues persist
 
-## 📝 License
+**Slow Processing**
+- First run may take 10-20 seconds (AI analysis)
+- Check your internet connection
+- Gemini API may have rate limits
 
-Created for personal use and interview preparation.
+## 📄 License
+
+This project is for personal use. Google Gemini API usage is subject to Google's terms of service.
 
 ## 🙏 Credits
 
-Built with ❤️ to help job seekers ace their interviews and land their dream jobs!
-
----
-
-**Pro Tip**: Practice with multiple job descriptions to build a versatile skill set and improve your interview performance across different roles!
+Built with ❤️ using Google Gemini AI
